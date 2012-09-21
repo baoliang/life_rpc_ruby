@@ -36,7 +36,7 @@ def get_m_info(page)
       pic =   page.doc.search("//div[@id='zka']").search("img")[0]["src"]
       label =  div.search("li")[3].text
       desc  = div.search("li")[4].text
-      data=open("http://www.kan520.com#{pic}"){|f|f.read}
+      data=open("url#{pic}"){|f|f.read}
       Gridfs.new.save_file(pic, data)
       
 
@@ -126,7 +126,7 @@ Anemone.crawl('url') do |anemone|
   anemone.storage = Anemone::Storage.MongoDB
   anemone.on_every_page do |page|
     begin
-      if page.url.host == 'www.kan520.com'
+      if page.url.host == 'url'
         get_m_info(page)
         get_detail_info(page) 
         
