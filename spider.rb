@@ -122,7 +122,7 @@ def get_detail_info(page)
   end
 end
 
-Anemone.crawl('http://www.kan520.com/') do |anemone|
+Anemone.crawl('url') do |anemone|
   anemone.storage = Anemone::Storage.MongoDB
   anemone.on_every_page do |page|
     begin
